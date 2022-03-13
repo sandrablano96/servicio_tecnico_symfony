@@ -1,0 +1,44 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Clientes{% endblock %}
+
+{% block main %}
+
+{% for message in app.flashes('aviso') %}
+    <div class="flash-notice">
+        {{ message }}
+    </div>
+{% endfor %}
+<h2>Consulta de clientes</h2>
+<div class="cliente mb-2">
+    <h3>Datos del cliente</h3>
+    <div class="cliente__info ps-3">
+        <p>{{ cliente.nombre }} {{ cliente.apellidos }}</p>
+        <p>{{ cliente.telefono }}</p>
+        <p> 
+            {% if cliente.direccion is not empty %} 
+               {{ cliente.direccion  }} 
+            {%else%} 
+                Sin datos de direccion
+            {% endif %} 
+        </p>
+    </div>
+        <h3>Datos de la incidencia</h3>
+    <div class="cliente__incidencias ">
+        {% if cliente.incidencias is not empty %}
+            {% for incidencia in cliente.incidencias %}
+                <div class="incidencia ps-3 border-bottom border-dark p-2">
+                <p>{{ incidencia.titulo }} <a href="{{ path("borrar_incidencia", {id: incidencia.id, cliente:cliente.id}) }}"><i class="fa-solid fa-circle-minus"></i></a> <a href="{{ path("editar_incidencia", {id: incidencia.id, cliente:cliente.id}) }}"><i class="fas fa-edit"></i></a></p>
+                <p> Iniciada el: {{ incidencia.fechaCreacion | date("Y-m-d") }}</p>
+                <p>{{ incidencia.estado }}</p>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p class="ps-3 p-2">Todavía no ha registrado incidencias </p>
+        {% endif %}
+        <a href="{{ path("insertar_incidenciaCliente", {cliente:cliente.id}) }}" class="btn boton mt-2 mb-2 text-white">Nueva incidencia</a>
+    </div>
+</div>
+<a href="{{ path("listado_clientes") }}" class="btn btn-light">Atrás</a>
+{% endblock %}{# empty Twig template #}

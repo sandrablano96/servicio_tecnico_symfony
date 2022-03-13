@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Clientes{% endblock %}
+
+{% block main %}
+
+{% for message in app.flashes('aviso') %}
+    <div class="flash-notice">
+        {{ message }}
+    </div>
+{% endfor %}
+<h2>Listado de clientes</h2>
+{% if clientes is not empty %}
+<div class="clientes">
+    {% for cliente in clientes %}
+        <div class="cliente">
+            <a href="{{ path('ver_cliente', {id:cliente.id}) }}">{{ cliente.nombre }} {{ cliente.apellidos }}</a> <a href="{{ path("borrar_cliente", {id:cliente.id}) }}"><i class="fa-solid fa-circle-minus"></i></a>
+        </div>
+    
+{% endfor %}
+{% else %}
+    <p>Todavía no hay ningún cliente</p>
+{% endif %}
+</div>
+<a href="{{ path('insertar_cliente')}}" class="btn boton text-white">Añadir cliente</a>
+{% endblock %}

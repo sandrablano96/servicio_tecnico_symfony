@@ -1,0 +1,24 @@
+{# empty Twig template #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Alta de clientes{% endblock %}
+
+{% block main %}
+<h2>Nuevo cliente</h2>
+{% for message in app.flashes('aviso') %}
+    <div class="flash-notice">
+        {{ message }}
+    </div>
+{% endfor %}
+
+{{ form_start(formulario, {'attr': {'class': 'w-50 m-auto'}} ) }}
+{{ form_row(formulario.nombre, {'attr': {'class': 'form-control mb-2'}} ) }}
+{{ form_row(formulario.apellidos, {'attr': {'class': 'form-control mb-2'}} ) }}
+{{ form_row(formulario.direccion, {'attr': {'class': 'form-control mb-2'}} ) }}
+{{ form_row(formulario.telefono, {'attr': {'class': 'form-control mb-2'}} ) }}
+{{ form_row(formulario.enviar, {
+            label: 'Registrar cliente', 'attr': {'class': 'btn boton mb-2 w-100'}
+        }) }}
+{{ form_end(formulario) }}
+<a href="{{ path("listado_clientes") }}" class="btn btn-light">Atrás</a>
+{% endblock %}

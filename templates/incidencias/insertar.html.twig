@@ -1,0 +1,27 @@
+{# empty Twig template #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Insertar incidencia{% endblock %}
+
+{% block main %}
+
+{% for message in app.flashes('aviso') %}
+    <div class="flash-notice">
+        {{ message }}
+    </div>
+{% endfor %}
+<h2>Insertar incidencia</h2>
+{{ form_start(formulario, {'attr': {'class': 'w-50 m-auto'}} ) }}
+{{ form_errors(formulario) }}
+{{ form_row(formulario.titulo, {
+            label: 'Titulo' , 'attr': {'class': 'form-control mb-2'}
+        }) }}
+{% if formulario.cliente is defined %}
+{{ form_row(formulario.cliente, {label: 'Cliente', 'attr': {'class': 'form-control mb-2'}}) }}
+{% endif %}
+{{ form_row(formulario.enviar, {
+            label: 'Registrar incidencia', 'attr': {'class': 'btn boton mb-2 w-100'}
+        }) }}
+{{ form_end(formulario) }}
+<a href="{{ path("listado_clientes") }}" class="btn btn-light">Atrás</a>
+{% endblock %}

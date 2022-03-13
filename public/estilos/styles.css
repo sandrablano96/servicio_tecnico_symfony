@@ -1,0 +1,42 @@
+*{
+    margin:0;
+    box-sizing: border-box
+}
+
+header{
+    border-bottom: 1px solid #055160;
+       
+}
+h1{
+    font-size: 2.4rem
+}
+nav a{
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: black;
+    text-decoration: none;
+    padding-left: 2rem;
+}
+
+div.card, .boton {
+    background-color: #055160;
+    color:white
+      
+}
+.clientes, .incidencias {
+    font-size: 16px;
+    margin-bottom: 2rem;
+}
+.cliente, .incidencia{
+    padding: 10px 0;
+    border-bottom: 1px solid #DDD
+}
+.cliente a, .incidencia a {
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
+
+p:first-letter {
+    text-transform: capitalize
+}

@@ -1,0 +1,26 @@
+{# empty Twig template #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Editar incidencia{% endblock %}
+
+{% block main %}
+<h2>Editar incidencia</h2>
+{% for message in app.flashes('aviso') %}
+    <div class="flash-notice">
+        {{ message }}
+    </div>
+{% endfor %}
+<h2>Editar incidencia</h2>
+Incidencia de : {{ cliente.nombre }}
+{{ form_start(formulario) }}
+{{ form_errors(formulario, {'attr': {'class': 'form-control mb-2'}}) }}
+{{ form_row(formulario.titulo, {
+            label: 'Titulo', 'attr': {'class': 'form-control mb-2'}
+        }) }}
+{{ form_row(formulario.estado, {label: 'Estado de la incidencia', value: incidencia.estado, 'attr': {'class': 'form-control mb-2'}}) }}
+{{ form_row(formulario.enviar, {
+            label: 'Modificar incidencia', 'attr': {'class': 'btn boton mb-2 w-100'}
+        }) }}
+{{ form_end(formulario) }}
+<a href="{{ path("listado_clientes") }}" class="btn btn-light">Atrás</a>
+{% endblock %}

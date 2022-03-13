@@ -1,0 +1,17 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Consulta de incidencia{% endblock %}
+
+{% block main %}
+<h2>Consulta de incidencia</h2>
+
+<div class="incidencia mb-2">
+    <h3 class="text-bold"> {{ incidencia.titulo }} </h3>
+    <p> Fecha de inicio: {{ incidencia.fechaCreacion | date("Y-m-d") }} </p>
+    <p> Cliente: {{ incidencia.cliente.nombre }} {{ incidencia.cliente.apellidos }}</p>
+    <p> Estado de la incidencia: {{ incidencia.estado }}</p>
+    <p> Usuario que la registró: {{ incidencia.usuario.nombre }} {{ incidencia.usuario.apellidos }}
+</div>
+    <a href="{{ path("listado_incidencias") }}" class="btn btn-light">Atrás</a>
+{% endblock %}{# empty Twig template #}
