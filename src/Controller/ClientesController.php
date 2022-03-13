@@ -53,7 +53,7 @@ class ClientesController extends AbstractController
                             'message' => 'Introduzca el los apellidos',
                         ])
             ]])
-                ->add('direccion', TextType::class)
+                ->add('direccion', TextType::class, ['required' => false])
                 ->add('telefono', TelType::class, [
                     'required' => true,
                     'constraints' => [
