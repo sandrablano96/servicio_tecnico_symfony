@@ -35,7 +35,7 @@ class ClientesController extends AbstractController
      * @return type
      */
     public function insertar(Request $request,ManagerRegistry $doctrine):Response{
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        //$this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $cliente = new Cliente();
         $form = $this->createFormBuilder($cliente)
                 ->add('nombre', TextType::class, [

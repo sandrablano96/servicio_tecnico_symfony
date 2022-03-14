@@ -40,7 +40,7 @@ class IncidenciasController extends AbstractController
      * @return Response
      */
     public function insertarConCliente(Request $request,ManagerRegistry $doctrine, Cliente $cliente):Response{
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        //$this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $incidencia = new Incidencia();
 
         $form = $this->createFormBuilder($incidencia)
@@ -86,7 +86,7 @@ class IncidenciasController extends AbstractController
      * @return Response
      */
     public function insertar(Request $request,ManagerRegistry $doctrine):Response{
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        //$this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         $clientes = $doctrine->getRepository(Cliente::class)->findAll();
         $incidencia = new Incidencia();
         $form = $this->createFormBuilder($incidencia)
